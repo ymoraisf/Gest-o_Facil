@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Gestão Fácil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='py.css') }}">
+</head>
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">GF</div>
+
+                <div class="brand-text">
+                    <h1>Gestão Fácil</h1>
+                    <span>Painel Administrativo</span>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <a class="active" href="/dashboard">Dashboard</a>
+                <a href="/cadastro-produto">Cadastrar Produto</a>
+                <a href="/">Sair</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                Sistema de controle de estoque e vendas desenvolvido com Python, Flask e SQLite.
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Visão geral do estoque e dos produtos cadastrados.</p>
+                </div>
+
+                <a class="btn" href="/cadastro-produto">Novo Produto</a>
+            </header>
+
+            <div class="container">
+
+                {% set ns = namespace(valor_estoque=0) %}
+                {% for produto in produtos %}
+                    {% set ns.valor_estoque = ns.valor_estoque + (produto.quantidade * produto.preco) %}
+                {% endfor %}
+
+                <section class="cards-resumo">
+                    <div class="resumo-card">
+                        <span>Total de Produtos</span>
+                        <strong>{{ produtos|length }}</strong>
+                    </div>
+
+                    <div class="resumo-card">
+                        <span>Total de Vendas</span>
+                        <strong>{{ vendas|length }}</strong>
+                    </div>
+
+                    <div class="resumo-card">
+                        <span>Valor em Estoque</span>
+                        <strong>R$ {{ "%.2f"|format(ns.valor_estoque) }}</strong>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Produtos cadastrados</h3>
+                            <p>Gerencie os produtos, quantidades, categorias e valores.</p>
+                        </div>
+
+                        <a class="btn" href="/cadastro-produto">Cadastrar Produto</a>
+                    </div>
+
+                    {% if produtos %}
+                        <div class="table-wrapper">
+                            <table class="tabela">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Produto</th>
+                                    <th>Categoria</th>
+                                    <th>Quantidade</th>
+                                    <th>Preço</th>
+                                    <th>Ações</th>
+                                </tr>
+
+                                {% for produto in produtos %}
+                                <tr>
+                                    <td>#{{ produto.id }}</td>
+                                    <td>{{ produto.nome }}</td>
+                                    <td>
+                                        <span class="badge">{{ produto.categoria }}</span>
+                                    </td>
+                                    <td>{{ produto.quantidade }}</td>
+                                    <td class="preco">R$ {{ "%.2f"|format(produto.preco) }}</td>
+                                    <td>
+                                        <div class="acoes">
+                                            <a class="btn btn-editar" href="/produto/editar/{{ produto.id }}">Editar</a>
+
+                                            <a class="btn btn-excluir" href="/produto/excluir/{{ produto.id }}" onclick="return confirm('Tem certeza que deseja excluir este produto?')">
+                                                Excluir
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="empty-state">
+                            <h4>Nenhum produto cadastrado</h4>
+                            <p>Comece cadastrando o primeiro produto do estoque.</p>
+                        </div>
+                    {% endif %}
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

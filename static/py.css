@@ -1,0 +1,476 @@
+:root {
+    --azul-900: #0f172a;
+    --azul-800: #1e293b;
+    --azul-700: #1d4ed8;
+    --azul-600: #2563eb;
+    --azul-500: #3b82f6;
+    --cinza-50: #f8fafc;
+    --cinza-100: #f1f5f9;
+    --cinza-200: #e2e8f0;
+    --cinza-300: #cbd5e1;
+    --cinza-500: #64748b;
+    --cinza-700: #334155;
+    --cinza-900: #0f172a;
+    --branco: #ffffff;
+    --vermelho: #dc2626;
+    --vermelho-hover: #b91c1c;
+    --verde: #16a34a;
+    --sombra: 0 10px 30px rgba(15, 23, 42, 0.08);
+    --borda: 1px solid var(--cinza-200);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background: var(--cinza-100);
+    color: var(--cinza-900);
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+.login-body {
+    min-height: 100vh;
+    background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(37, 99, 235, 0.85)),
+        radial-gradient(circle at top right, #3b82f6, transparent 30%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--branco);
+    border-radius: 22px;
+    padding: 42px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+.login-logo {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--azul-700), var(--azul-500));
+    color: var(--branco);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 24px;
+}
+
+.login-card h1 {
+    font-size: 32px;
+    color: var(--azul-900);
+    margin-bottom: 10px;
+}
+
+.login-card p {
+    color: var(--cinza-500);
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 270px;
+    background: var(--azul-900);
+    color: var(--branco);
+    padding: 26px 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 36px;
+}
+
+.brand-icon {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, var(--azul-600), var(--azul-500));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: var(--branco);
+}
+
+.brand-text h1 {
+    font-size: 20px;
+    line-height: 1.1;
+}
+
+.brand-text span {
+    font-size: 12px;
+    color: var(--cinza-300);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu a {
+    color: var(--cinza-300);
+    padding: 13px 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.menu a:hover,
+.menu a.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--branco);
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 24px;
+    left: 20px;
+    right: 20px;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--cinza-300);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.main-content {
+    margin-left: 270px;
+    width: calc(100% - 270px);
+    padding: 28px;
+}
+
+.topbar {
+    background: var(--branco);
+    border: var(--borda);
+    border-radius: 18px;
+    padding: 22px 26px;
+    box-shadow: var(--sombra);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.topbar h2 {
+    font-size: 24px;
+    color: var(--azul-900);
+}
+
+.topbar p {
+    color: var(--cinza-500);
+    margin-top: 4px;
+}
+
+.container {
+    width: 100%;
+}
+
+.cards-resumo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.resumo-card {
+    background: var(--branco);
+    border: var(--borda);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: var(--sombra);
+    position: relative;
+    overflow: hidden;
+}
+
+.resumo-card::before {
+    content: "";
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    width: 110px;
+    height: 110px;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 50%;
+}
+
+.resumo-card span {
+    display: block;
+    color: var(--cinza-500);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.resumo-card strong {
+    font-size: 32px;
+    color: var(--azul-900);
+}
+
+.card {
+    background: var(--branco);
+    border: var(--borda);
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: var(--sombra);
+    margin-bottom: 24px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.card-header h3 {
+    font-size: 21px;
+    color: var(--azul-900);
+}
+
+.card-header p {
+    color: var(--cinza-500);
+    margin-top: 4px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--azul-600);
+    color: var(--branco);
+    padding: 11px 17px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: var(--azul-700);
+    transform: translateY(-1px);
+}
+
+.btn-secundario {
+    background: var(--cinza-700);
+}
+
+.btn-secundario:hover {
+    background: var(--azul-900);
+}
+
+.btn-editar {
+    background: #0284c7;
+    padding: 8px 12px;
+    font-size: 13px;
+}
+
+.btn-editar:hover {
+    background: #0369a1;
+}
+
+.btn-excluir {
+    background: var(--vermelho);
+    padding: 8px 12px;
+    font-size: 13px;
+}
+
+.btn-excluir:hover {
+    background: var(--vermelho-hover);
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 760px;
+}
+
+.tabela th {
+    background: var(--cinza-50);
+    color: var(--cinza-700);
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: var(--borda);
+}
+
+.tabela td {
+    padding: 15px 16px;
+    border-bottom: var(--borda);
+    color: var(--cinza-700);
+}
+
+.tabela tr:hover td {
+    background: var(--cinza-50);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.preco {
+    font-weight: 700;
+    color: var(--verde);
+}
+
+.acoes {
+    display: flex;
+    gap: 8px;
+}
+
+.empty-state {
+    background: var(--cinza-50);
+    border: 1px dashed var(--cinza-300);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    color: var(--cinza-500);
+}
+
+.empty-state h4 {
+    color: var(--azul-900);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.formulario {
+    max-width: 680px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    color: var(--cinza-700);
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--cinza-300);
+    background: var(--branco);
+    color: var(--cinza-900);
+    outline: none;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.form-group input:focus {
+    border-color: var(--azul-600);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.page-subtitle {
+    color: var(--cinza-500);
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+
+    .sidebar-footer {
+        position: static;
+        margin-top: 24px;
+    }
+
+    .app-layout {
+        flex-direction: column;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 18px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cards-resumo {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

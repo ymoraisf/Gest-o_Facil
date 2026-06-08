@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Produto - Gestão Fácil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='py.css') }}">
+</head>
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">GF</div>
+
+                <div class="brand-text">
+                    <h1>Gestão Fácil</h1>
+                    <span>Painel Administrativo</span>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <a href="/dashboard">Dashboard</a>
+                <a class="active" href="/cadastro-produto">Cadastrar Produto</a>
+                <a href="/">Sair</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                Cadastre produtos com categoria, quantidade e preço para manter o estoque organizado.
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h2>Cadastrar Produto</h2>
+                    <p>Adicione um novo item ao controle de estoque.</p>
+                </div>
+
+                <a class="btn btn-secundario" href="/dashboard">Voltar</a>
+            </header>
+
+            <section class="card formulario">
+                <div class="card-header">
+                    <div>
+                        <h3>Dados do Produto</h3>
+                        <p class="page-subtitle">Preencha corretamente as informações abaixo.</p>
+                    </div>
+                </div>
+
+                <form method="POST">
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label>Nome do produto</label>
+                            <input type="text" name="nome" placeholder="Ex: Mouse sem fio" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Categoria</label>
+                            <input type="text" name="categoria" placeholder="Ex: Informática" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Quantidade</label>
+                            <input type="number" name="quantidade" placeholder="Ex: 10" required>
+                        </div>
+
+                        <div class="form-group full">
+                            <label>Preço</label>
+                            <input type="number" step="0.01" name="preco" placeholder="Ex: 59.90" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn" type="submit">Cadastrar Produto</button>
+                        <a class="btn btn-secundario" href="/dashboard">Cancelar</a>
+                    </div>
+                </form>
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
